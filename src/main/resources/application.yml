@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: {spring_datasource_url}
+    username: {spring_datasource_username}
+    password: {spring_datasource_password}
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+logging:
+  level:
+    org.hibernate:SQL: DEBUG
