@@ -7,6 +7,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.domain.Persistable;
 
 import static jakarta.persistence.FetchType.LAZY;
 
@@ -14,7 +15,7 @@ import static jakarta.persistence.FetchType.LAZY;
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class User extends BaseTimeEntity {
+public class User extends BaseTimeEntity implements Persistable<String> {
     @Id
     private String username;
 
@@ -36,5 +37,15 @@ public class User extends BaseTimeEntity {
         this.password = password;
         this.name = name;
         this.roleType = roleType;
+    }
+
+    @Override
+    public String getId() {
+        return this.username;
+    }
+
+    @Override
+    public boolean isNew() {
+        return this.createdDate == null;
     }
 }
