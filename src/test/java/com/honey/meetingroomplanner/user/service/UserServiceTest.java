@@ -8,7 +8,6 @@ import com.honey.meetingroomplanner.user.entity.User;
 import com.honey.meetingroomplanner.user.exception.UsernameAlreadyExistsException;
 import com.honey.meetingroomplanner.user.repository.UserRepository;
 import jakarta.persistence.EntityManager;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

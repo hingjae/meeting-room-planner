@@ -6,9 +6,8 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-@Builder
 public class CreateUserForm {
-    @NotBlank(message = "{NotBlank.createUserForm.username}")
+    @NotBlank(message = "{NotNull}")
     private final String username;
 
     @NotNull(message = "{NotNull}")
@@ -19,4 +18,12 @@ public class CreateUserForm {
 
     @NotBlank(message = "{NotBlank}")
     private final String name;
+
+    @Builder
+    public CreateUserForm(String username, Long teamId, String password, String name) {
+        this.username = username;
+        this.teamId = teamId;
+        this.password = password;
+        this.name = name;
+    }
 }

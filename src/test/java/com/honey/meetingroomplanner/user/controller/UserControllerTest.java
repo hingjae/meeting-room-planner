@@ -119,7 +119,6 @@ class UserControllerTest {
                 .andExpect(view().name("user/sign-up"));
     }
 
-    @Disabled
     @Test
     public void username이_이미존재하면_예외를던진다() throws Exception {
         CreateUserForm form = getCreateUserForm();
@@ -136,8 +135,8 @@ class UserControllerTest {
                         .param(csrfToken.getParameterName(), csrfToken.getToken())
                         .with(csrf().asHeader())
                 )
-                .andExpect(view().name("user/sign-up")) // 예외가 발생하여 다시 회원가입 페이지로 리다이렉트할 것으로 예상됩니다.
-                .andExpect(model().attributeExists("errorMessage")); // 모델에 errorMessage 속성이 존재할 것으로 예상됩니다.
+                .andExpect(view().name("user/sign-up"))
+                .andExpect(model().attributeHasErrors("user"));
     }
 
     private CsrfToken getCsrfToken() {
