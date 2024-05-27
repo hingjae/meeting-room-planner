@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기본 달력</title>
+    <link rel="stylesheet" type="text/css" href="/css/calendar.css">
+</head>
+<body>
+<div th:replace="~{fragment/top-bar :: topbar}"></div>
+<div class="main-container">
+    <div class="calendar-container">
+        <div class="calendar">
+            <header>
+                <span id="prev">&lt;</span>
+                <h2 id="month-year"></h2>
+                <span id="next">&gt;</span>
+            </header>
+            <table>
+                <thead>
+                <tr>
+                    <th>일</th>
+                    <th>월</th>
+                    <th>화</th>
+                    <th>수</th>
+                    <th>목</th>
+                    <th>금</th>
+                    <th>토</th>
+                </tr>
+                </thead>
+                <tbody id="calendar-body">
+                </tbody>
+            </table>
+        </div>
+        <div class="button-container">
+            <a href="/meeting/create" id="create-reservation">예약 생성</a>
+        </div>
+    </div>
+    <div class="timetable-container">
+        <table class="time-table">
+            <colgroup>
+                <col style="background-color:darkseagreen;">
+            </colgroup>
+            <thead>
+            <tr>
+                <th rowspan="2">구분</th>
+                <th colspan="24" style="background-color:white;">Time Table</th>
+            </tr>
+            <tr>
+                <th>0</th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                <th>8</th>
+                <th>9</th>
+                <th>10</th>
+                <th>11</th>
+                <th>12</th>
+                <th>13</th>
+                <th>14</th>
+                <th>15</th>
+                <th>16</th>
+                <th>17</th>
+                <th>18</th>
+                <th>19</th>
+                <th>20</th>
+                <th>21</th>
+                <th>22</th>
+                <th>23</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th>회의실 1</th>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-x">x</td>
+                <td class="status-x">x</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-x">x</td>
+                <td class="status-x">x</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+            </tr>
+            <tr>
+                <th>회의실 2</th>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-x">x</td>
+                <td class="status-x">x</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-x">x</td>
+                <td class="status-x">x</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+            </tr>
+            <tr>
+                <th>회의실 3</th>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-x">x</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+                <td class="status-x">x</td>
+                <td class="status-x">x</td>
+                <td class="status-o">o</td>
+                <td class="status-o">o</td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="/js/calendar.js"></script>
+</body>
+</html>

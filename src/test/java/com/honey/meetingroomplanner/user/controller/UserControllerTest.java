@@ -4,7 +4,6 @@ import com.honey.meetingroomplanner.team.entity.Team;
 import com.honey.meetingroomplanner.team.service.TeamService;
 import com.honey.meetingroomplanner.user.exception.UsernameAlreadyExistsException;
 import com.honey.meetingroomplanner.user.service.UserService;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
