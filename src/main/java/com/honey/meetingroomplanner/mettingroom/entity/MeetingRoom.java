@@ -1,16 +1,18 @@
-package com.honey.meetingroomplanner.team.entity;
+package com.honey.meetingroomplanner.mettingroom.entity;
 
-import com.honey.meetingroomplanner.common.BaseTimeEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-@Getter @Setter
+@Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Team extends BaseTimeEntity {
+public class MeetingRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,7 +20,7 @@ public class Team extends BaseTimeEntity {
     private String name;
 
     @Builder
-    public Team(Long id, String name) {
+    public MeetingRoom(Long id, String name) {
         this.id = id;
         this.name = name;
     }
