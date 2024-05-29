@@ -1,6 +1,6 @@
 package com.honey.meetingroomplanner.meeting.service;
 
-import com.honey.meetingroomplanner.meeting.dto.CreateMeetingForm;
+import com.honey.meetingroomplanner.meeting.controller.dto.CreateMeetingForm;
 import com.honey.meetingroomplanner.meeting.entity.Meeting;
 import com.honey.meetingroomplanner.meeting.repository.MeetingRepository;
 import com.honey.meetingroomplanner.mettingroom.entity.MeetingRoom;

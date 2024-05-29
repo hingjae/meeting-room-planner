@@ -1,7 +1,7 @@
 package com.honey.meetingroomplanner.meeting.controller;
 
 import com.honey.meetingroomplanner.meeting.controller.dto.MeetingRoomList;
-import com.honey.meetingroomplanner.meeting.dto.CreateMeetingForm;
+import com.honey.meetingroomplanner.meeting.controller.dto.CreateMeetingForm;
 import com.honey.meetingroomplanner.meeting.service.MeetingService;
 import com.honey.meetingroomplanner.mettingroom.service.MeetingRoomService;
 import lombok.RequiredArgsConstructor;

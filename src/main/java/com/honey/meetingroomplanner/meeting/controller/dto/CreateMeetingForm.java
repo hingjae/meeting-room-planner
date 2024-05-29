@@ -1,18 +1,17 @@
-package com.honey.meetingroomplanner.meeting.dto;
+package com.honey.meetingroomplanner.meeting.controller.dto;
 
-import com.honey.meetingroomplanner.meeting.entity.Meeting;
-import com.honey.meetingroomplanner.mettingroom.entity.MeetingRoom;
 import lombok.Builder;
 import lombok.Getter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
-
 @Getter
 public class CreateMeetingForm {
-    //Todo: startTime, endTime 00분, 30분단위로 끊어지는 검증 로직 필요함.
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private final LocalDateTime startTime;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private final LocalDateTime endTime;
 
     private final Long meetingRoomId;

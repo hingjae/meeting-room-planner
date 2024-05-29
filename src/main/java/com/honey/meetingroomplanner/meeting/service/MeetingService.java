@@ -1,6 +1,6 @@
 package com.honey.meetingroomplanner.meeting.service;
 
-import com.honey.meetingroomplanner.meeting.dto.CreateMeetingForm;
+import com.honey.meetingroomplanner.meeting.controller.dto.CreateMeetingForm;
 import com.honey.meetingroomplanner.meeting.entity.Meeting;
 import com.honey.meetingroomplanner.meeting.repository.MeetingRepository;
 import com.honey.meetingroomplanner.mettingroom.entity.MeetingRoom;
@@ -20,6 +20,7 @@ public class MeetingService {
 
     @Transactional
     public Long save(CreateMeetingForm form) {
+        // Todo : 캐시 추가, 회의실 중복 검사
         MeetingRoom meetingRoom = meetingRoomRepository.findById(form.getMeetingRoomId())
                 .orElseThrow(EntityNotFoundException::new);
 

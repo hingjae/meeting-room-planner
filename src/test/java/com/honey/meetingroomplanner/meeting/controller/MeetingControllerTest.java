@@ -1,6 +1,6 @@
 package com.honey.meetingroomplanner.meeting.controller;
 
-import com.honey.meetingroomplanner.meeting.dto.CreateMeetingForm;
+import com.honey.meetingroomplanner.meeting.controller.dto.CreateMeetingForm;
 import com.honey.meetingroomplanner.meeting.service.MeetingService;
 import com.honey.meetingroomplanner.mettingroom.entity.MeetingRoom;
 import com.honey.meetingroomplanner.mettingroom.service.MeetingRoomService;
@@ -12,7 +12,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.test.web.servlet.MockMvc;
