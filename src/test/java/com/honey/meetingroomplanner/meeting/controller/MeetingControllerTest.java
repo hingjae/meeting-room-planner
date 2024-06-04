@@ -1,9 +1,11 @@
 package com.honey.meetingroomplanner.meeting.controller;
 
 import com.honey.meetingroomplanner.meeting.controller.dto.CreateMeetingForm;
+import com.honey.meetingroomplanner.meeting.exception.MeetingRoomAlreadyBookedException;
 import com.honey.meetingroomplanner.meeting.service.MeetingService;
 import com.honey.meetingroomplanner.mettingroom.entity.MeetingRoom;
 import com.honey.meetingroomplanner.mettingroom.service.MeetingRoomService;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -68,6 +70,29 @@ class MeetingControllerTest {
                 )
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/"));
+    }
+
+    @Disabled
+    @Test
+    @WithMockUser
+    public void 회의시간이곂치면_에러메세지를출력한다() throws Exception {
+        CreateMeetingForm form = getCreateMeetingForm();
+        CsrfToken csrfToken = getCsrfToken();
+
+        given(meetingService.save(form)).willThrow(new MeetingRoomAlreadyBookedException());
+
+        mockMvc.perform(post("/meeting/new")
+                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                        .param("meetingRoomId", String.valueOf(form.getMeetingRoomId()))
+                        .param("startTime", String.valueOf(form.getStartTime()))
+                        .param("endTime", String.valueOf(form.getEndTime()))
+                        .param("title", form.getTitle())
+                        .param(csrfToken.getParameterName(), csrfToken.getToken())
+                        .with(csrf().asHeader())
+                )
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/meeting/new"))
+                .andExpect(flash().attributeExists("errorMessage"));
     }
 
     private CreateMeetingForm getCreateMeetingForm() {
