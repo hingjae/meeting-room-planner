@@ -10,13 +10,14 @@
 <h2 class="form-title">Create Meeting Form</h2>
 
 <form th:action="@{/meeting/new}" th:object="${meeting}" method="post" class="create-meeting-form">
+    <div th:if="${errorMessage}" th:text="${errorMessage}" style="color: red;"></div>
     <label for="meetingRoomId" class="form-label">Meeting Room</label>
     <select id="meetingRoomId" name="meetingRoomId" th:field="*{meetingRoomId}" class="form-select">
         <option th:each="team : ${teams}" th:value="${team.id}" th:text="${team.name}"></option>
     </select><br><br>
 
     <label class="form-label">Date</label>
-    <span th:text="${param.date}">2024-05-31</span> <!-- URL 매개변수에서 날짜를 읽어와 표시 -->
+    <span id="dateSpan" th:text="${param.date}">2024-05-31</span> <!-- URL 매개변수에서 날짜를 읽어와 표시 -->
     <input type="hidden" id="selectedDate" name="date" th:value="${param.date}"/> <!-- 선택된 날짜를 저장하는 숨겨진 입력 필드 -->
     <br><br>
 
@@ -37,5 +38,14 @@
     <input type="hidden" th:name="${_csrf?.parameterName}" th:value="${_csrf?.token}" class="form-hidden"/>
 </form>
 <script src="/js/create-meeting-form.js"></script>
+<script>
+    // URL에서 'date' 쿼리 매개변수 값 가져오기
+    var urlParams = new URLSearchParams(window.location.search);
+    var dateParam = urlParams.get('date');
+
+    // 가져온 날짜를 span 요소와 숨겨진 입력 필드에 설정
+    document.getElementById('dateSpan').innerText = dateParam;
+    document.getElementById('selectedDate').value = dateParam;
+</script>
 </body>
 </html>

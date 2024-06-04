@@ -1,9 +1,11 @@
 package com.honey.meetingroomplanner.meeting.exception;
 
 public class MeetingRoomAlreadyBookedException extends RuntimeException {
-    private static final String ERROR_CODE = "AlreadyBooked.MeetingRoom";
+    private static final String ERROR_MESSAGE = "이미 예약된 시간입니다.";
+//    private static final String ERROR_CODE = "AlreadyBooked.MeetingRoom";
+
     public MeetingRoomAlreadyBookedException() {
-        super("ERROR_CODE");
+        super(ERROR_MESSAGE);
     }
 
     public MeetingRoomAlreadyBookedException(String message) {

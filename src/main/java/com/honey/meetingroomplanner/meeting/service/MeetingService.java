@@ -26,7 +26,7 @@ public class MeetingService {
 
     @Transactional
     public Long save(CreateMeetingForm form) {
-        // Todo : 캐시 추가, 회의실 중복 검사
+        // Todo : 캐시 추가
         MeetingRoom meetingRoom = meetingRoomRepository.findById(form.getMeetingRoomId())
                 .orElseThrow(EntityNotFoundException::new);
         LocalDateTime startTime = form.getStartTime();
