@@ -11,7 +11,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -37,5 +39,9 @@ public class MeetingService {
         Meeting meeting = Meeting.create(meetingRoom, form.getTitle(), startTime, endTime);
 
         return meetingRepository.save(meeting).getId();
+    }
+
+    public List<Meeting> findByDate(LocalDate date) {
+        return meetingRepository.findAllByDate(date);
     }
 }

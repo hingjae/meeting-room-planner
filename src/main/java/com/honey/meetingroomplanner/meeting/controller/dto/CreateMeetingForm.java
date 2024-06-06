@@ -1,5 +1,6 @@
 package com.honey.meetingroomplanner.meeting.controller.dto;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Getter;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -8,9 +9,11 @@ import java.time.LocalDateTime;
 
 @Getter
 public class CreateMeetingForm {
+    @NotNull
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private final LocalDateTime startTime;
 
+    @NotNull
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private final LocalDateTime endTime;
 
