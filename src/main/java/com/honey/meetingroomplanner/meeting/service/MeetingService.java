@@ -41,7 +41,7 @@ public class MeetingService {
         return meetingRepository.save(meeting).getId();
     }
 
-    public List<Meeting> findByDate(LocalDate dateParam) {
-        return meetingRepository.findAllByDate(dateParam);
+    public List<Meeting> findByDate(LocalDate date) {
+        return meetingRepository.findAllByDate(date);
     }
 }

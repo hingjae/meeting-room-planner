@@ -14,6 +14,6 @@ public interface MeetingRepository extends JpaRepository<Meeting, Long> {
             " (m.endTime > :startTime and m.startTime < :endTime)")
     List<Meeting> findOverlappingMeetings(@Param("meetingRoomId") Long meetingRoomId, @Param("startTime") LocalDateTime startTime, @Param("endTime") LocalDateTime endTime);
 
-    @Query("select m from Meeting m where DATE(m.startTime) = :date")
-    List<Meeting> findAllByDate(@Param("date") LocalDate dateParam);
+    @Query("select m from Meeting m join fetch m.meetingRoom where DATE(m.startTime) = :date")
+    List<Meeting> findAllByDate(@Param("date") LocalDate date);
 }
