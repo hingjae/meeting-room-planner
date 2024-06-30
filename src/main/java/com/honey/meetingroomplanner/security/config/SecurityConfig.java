@@ -12,7 +12,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-@EnableWebSecurity
+//@EnableWebSecurity // 스프링 부트 프로젝트는 생략해도된다.
 @Configuration
 public class SecurityConfig {
     @Bean
