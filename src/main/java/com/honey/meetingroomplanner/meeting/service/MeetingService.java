@@ -6,6 +6,7 @@ import com.honey.meetingroomplanner.meeting.repository.MeetingRepository;
 import com.honey.meetingroomplanner.meeting.validator.MeetingValidator;
 import com.honey.meetingroomplanner.mettingroom.entity.MeetingRoom;
 import com.honey.meetingroomplanner.mettingroom.repository.MeetingRoomRepository;
+import com.honey.meetingroomplanner.security.dto.CustomUserDetails;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -43,5 +44,11 @@ public class MeetingService {
 
     public List<Meeting> findByDate(LocalDate date) {
         return meetingRepository.findAllByDate(date);
+    }
+
+    @Transactional
+    public Long create(CustomUserDetails userDetails, CreateMeetingForm form) {
+
+        return null;
     }
 }

@@ -8,9 +8,11 @@ import com.honey.meetingroomplanner.mettingroom.entity.MeetingRoom;
 import com.honey.meetingroomplanner.mettingroom.repository.MeetingRoomRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
@@ -20,6 +22,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+@ActiveProfiles("test")
 @Transactional
 @SpringBootTest
 class MeetingServiceTest {
@@ -81,6 +84,7 @@ class MeetingServiceTest {
                 .isInstanceOf(MeetingRoomAlreadyBookedException.class);
     }
 
+    @DisplayName("날짜로 회의를 조회한다.")
     @Test
     public void 날짜로_회의를조회한다() {
         initData();
@@ -92,6 +96,7 @@ class MeetingServiceTest {
         assertThat(meetings.get(0).getTitle()).isEqualTo("meeting1");
         assertThat(meetings.get(1).getTitle()).isEqualTo("meeting2");
     }
+
 
     private void initData() {
         MeetingRoom meetingRoom = MeetingRoom.builder()
