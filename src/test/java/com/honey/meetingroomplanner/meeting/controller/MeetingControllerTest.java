@@ -1,6 +1,7 @@
 package com.honey.meetingroomplanner.meeting.controller;
 
 import com.honey.meetingroomplanner.meeting.controller.dto.CreateMeetingForm;
+import com.honey.meetingroomplanner.meeting.entity.Meeting;
 import com.honey.meetingroomplanner.meeting.exception.MeetingRoomAlreadyBookedException;
 import com.honey.meetingroomplanner.meeting.service.MeetingService;
 import com.honey.meetingroomplanner.mettingroom.entity.MeetingRoom;
@@ -18,6 +19,7 @@ import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -93,6 +95,51 @@ class MeetingControllerTest {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/meeting/new"))
                 .andExpect(flash().attributeExists("errorMessage"));
+    }
+
+    @Test
+    @WithMockUser
+    public void 날짜로_회의를_조회한다() throws Exception {
+        LocalDate date = LocalDate.of(2024, 6, 6);
+        List<Meeting> meetings = getMeetings();
+        given(meetingService.findByDate(date)).willReturn(meetings);
+
+        mockMvc.perform(get("/api/meetings")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .param("date", String.valueOf(date))
+                )
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.items").exists())
+                .andExpect(jsonPath("$.items[0].title").value("meeting1"))
+                .andExpect(jsonPath("$.items[1].title").value("meeting2"))
+                .andExpect(jsonPath("$.items[0].meetingRoomName").value("meetingRoom1"))
+                .andExpect(jsonPath("$.items[1].meetingRoomName").value("meetingRoom1"));
+    }
+
+    private List<Meeting> getMeetings() {
+        MeetingRoom meetingRoom = MeetingRoom.builder()
+                .id(1L)
+                .name("meetingRoom1")
+                .build();
+
+        Meeting meeting1 = Meeting.builder()
+                .id(1L)
+                .meetingRoom(meetingRoom)
+                .title("meeting1")
+                .startTime(LocalDateTime.of(20204, 6, 6, 12, 0, 0))
+                .endTime(LocalDateTime.of(20204, 6, 6, 15, 0, 0))
+                .build();
+
+        Meeting meeting2 = Meeting.builder()
+                .id(2L)
+                .meetingRoom(meetingRoom)
+                .title("meeting2")
+                .startTime(LocalDateTime.of(20204, 6, 6, 17, 0, 0))
+                .endTime(LocalDateTime.of(20204, 6, 6, 19, 0, 0))
+                .build();
+
+        return List.of(meeting1, meeting2);
     }
 
     private CreateMeetingForm getCreateMeetingForm() {
