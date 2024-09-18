@@ -1,0 +1,30 @@
+.time-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.time-table colgroup col {
+    background-color: white;
+}
+.time-table thead th {
+    background-color: white;
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 10px;
+}
+.time-table tbody th {
+    background-color: white;
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 10px;
+}
+.time-table tbody td {
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 10px;
+}
+.time-table .status-o {
+    background-color: lightgreen;
+}
+.time-table .status-x {
+    background-color: lightcoral;
+}

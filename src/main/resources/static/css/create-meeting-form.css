@@ -1,0 +1,62 @@
+@import "top-bar.css";
+/* 전체 폼 컨테이너 스타일 */
+.create-meeting-form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 폼 제목 스타일 */
+.form-title {
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+/* 레이블 스타일 */
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+/* 입력 필드와 선택 필드 스타일 */
+.form-input,
+.form-select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* 버튼 스타일 */
+.form-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: 'Arial', sans-serif;
+}
+
+/* 버튼에 마우스를 올렸을 때의 스타일 */
+.form-button:hover {
+    background-color: #45a049;
+}
+
+/* CSRF 숨김 필드 숨기기 */
+.form-hidden {
+    display: none;
+}
